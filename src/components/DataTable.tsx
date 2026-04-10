@@ -18,6 +18,18 @@ function DataTable<T>({ data, columns }: DataTableProps<T>) {
           ))}
         </tr>
       </thead>
+
+      <tbody>
+        {data.map((row, index) => (
+          <tr key={index}>
+            {columns.map((column) => (
+              <td key={String(column.key)}>
+                {String(row[column.key])}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }
