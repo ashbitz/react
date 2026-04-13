@@ -2,6 +2,7 @@ import DataTable, { type Column } from './components/DataTable'
 import { students } from './data/students'
 import type { Student } from './types/student'
 import { useState } from 'react'
+import { calcularDiferenciaEnDias } from './utils/date-utils'
 
 const studentColumns: Column<Student>[] = [
   { header: 'ID', key: 'id' },
@@ -15,6 +16,11 @@ function App() {
   const [editingStudent, setEditingStudent] = useState<Partial<Student>>({
     name: 'Elliot Alderson',
   })
+
+  const diasDeDiferencia = calcularDiferenciaEnDias(
+  new Date('2026-04-01'),
+  new Date('2026-04-13')
+)
   
   return (
     <main>
@@ -33,6 +39,7 @@ function App() {
 >
   Cambiar estudiante en edición
 </button>
+<p>Diferencia en días: {diasDeDiferencia}</p>
     </main>
   )
 }
